@@ -16,7 +16,7 @@ import butterknife.Unbinder;
  * @package me.inrush.common.app
  */
 
-public abstract class Fragment extends android.support.v4.app.Fragment {
+public abstract class BaseFragment extends android.support.v4.app.Fragment {
 
     // 根布局
     protected View mRoot;

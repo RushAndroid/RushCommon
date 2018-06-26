@@ -14,11 +14,11 @@ import me.inrush.common.thread.handler.Action;
  * @package me.inrush.common.app
  */
 
-public class Application extends android.app.Application {
+public class BaseApplication extends android.app.Application {
 
-    private static Application instance;
+    private static BaseApplication instance;
 
-    public static Application getInstance() {
+    public static BaseApplication getInstance() {
         return instance;
     }
 
