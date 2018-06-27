@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.util.List;
 
@@ -24,7 +23,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        QMUIStatusBarHelper.translucent(this);
         // 在界面为初始化之前调用的初始化窗口
         initWindows();
 
@@ -92,9 +90,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (fragments != null && fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 // 判断是否为能够处理的Fragment类型
-                if (fragment instanceof com.sxds.common.app.Fragment) {
+                if (fragment instanceof BaseFragment) {
                     // 判断是否拦截了返回按钮
-                    if (((com.sxds.common.app.Fragment) fragment).onBackPressed()) {
+                    if (((BaseFragment) fragment).onBackPressed()) {
                         // 有则直接Return
                         return;
                     }
