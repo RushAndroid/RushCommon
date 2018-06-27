@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/title_item_fun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        tools:text="多布局" />
+
+    <TextView
+        android:id="@+id/desc_item_fun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#999"
+        tools:text="显示多布局列表" />
+</LinearLayout>

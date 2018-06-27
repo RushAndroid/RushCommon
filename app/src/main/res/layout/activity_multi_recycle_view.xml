@@ -10,7 +10,7 @@
     <include layout="@layout/layout_appbar" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_main"
+        android:id="@+id/recycler_multi_recycle_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/qmui_topbar_height"
