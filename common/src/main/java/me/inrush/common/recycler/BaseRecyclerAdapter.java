@@ -13,8 +13,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import me.inrush.common.R;
 
 
@@ -24,7 +22,7 @@ import me.inrush.common.R;
  * @package me.inrush.common.widget.recycler
  */
 
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter.ViewHolder<T>>
+public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder<T>>
         implements
         View.OnClickListener, // 点击事件监听器接口
         View.OnLongClickListener, // 长按事件监听器接口
@@ -43,7 +41,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
          * @param holder
          * @param data
          */
-        void onItemClick(ViewHolder holder, T data);
+        void onItemClick(BaseViewHolder holder, T data);
 
         /**
          * 当Cell长按时触发
@@ -51,7 +49,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
          * @param holder
          * @param data
          */
-        void onItemLongClick(ViewHolder holder, T data);
+        void onItemLongClick(BaseViewHolder holder, T data);
     }
 
     /**
@@ -94,13 +92,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      * @return ViewHolder
      */
     @Override
-    public ViewHolder<T> onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseViewHolder<T> onCreateViewHolder(ViewGroup parent, int viewType) {
         // 得到LayoutInflater用于初始化XML布局为View
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         // 把XML ID 为viewType的文件初始化为一个root view
         View root = inflater.inflate(viewType, parent, false);
         //  通过子类必须实现的方法,得到一个ViewHolder
-        ViewHolder<T> holder = onCreateViewHolder(root, viewType);
+        BaseViewHolder<T> holder = onCreateViewHolder(root, viewType);
 
         // 设置点击事件
         root.setOnClickListener(this);
@@ -109,8 +107,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         // 设置View的Tag为ViewHolder,进行双向绑定
         root.setTag(R.id.tag_recycler_holder, holder);
 
-        // 进行界面布局绑定
-        holder.unbinder = ButterKnife.bind(holder, root);
         holder.callback = this;
         return holder;
     }
@@ -143,7 +139,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      * @param viewType 布局Id
      * @return ViewHolder
      */
-    protected abstract ViewHolder<T> onCreateViewHolder(View root, int viewType);
+    protected abstract BaseViewHolder<T> onCreateViewHolder(View root, int viewType);
 
     /**
      * 绑定一个数据到holder上
@@ -152,7 +148,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      * @param position 位置
      */
     @Override
-    public void onBindViewHolder(ViewHolder<T> holder, int position) {
+    public void onBindViewHolder(BaseViewHolder<T> holder, int position) {
         T data = mDataList.get(position);
         // 触发Holder的绑定方法
         holder.bind(data);
@@ -234,7 +230,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      * @param holder ViewHolder
      */
     @Override
-    public void update(T data, ViewHolder<T> holder) {
+    public void update(T data, BaseViewHolder<T> holder) {
         int pos = holder.getAdapterPosition();
         if (pos >= 0) {
             mDataList.remove(pos);
@@ -245,7 +241,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
 
     @Override
     public void onClick(View v) {
-        ViewHolder viewHolder = (ViewHolder) v.getTag(R.id.tag_recycler_holder);
+        BaseViewHolder viewHolder = (BaseViewHolder) v.getTag(R.id.tag_recycler_holder);
         if (this.mListener != null) {
             // 得到ViewHolder在当前对应的Adapter中的位置
             int pos = viewHolder.getAdapterPosition();
@@ -256,7 +252,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
 
     @Override
     public boolean onLongClick(View v) {
-        ViewHolder viewHolder = (ViewHolder) v.getTag(R.id.tag_recycler_holder);
+        BaseViewHolder viewHolder = (BaseViewHolder) v.getTag(R.id.tag_recycler_holder);
         if (this.mListener != null) {
             int pos = viewHolder.getAdapterPosition();
             this.mListener.onItemLongClick(viewHolder, mDataList.get(pos));
@@ -279,12 +275,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      *
      * @param <T> 泛型数据
      */
-    public static abstract class ViewHolder<T> extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private Unbinder unbinder;
+    public static abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected T mData;
         private AdapterCallback<T> callback;
 
-        public ViewHolder(View itemView) {
+        public BaseViewHolder(View itemView) {
             super(itemView);
         }
 
@@ -337,12 +332,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     public static abstract class AdapterListenerImpl<T> implements AdapterListener<T> {
 
         @Override
-        public void onItemClick(ViewHolder holder, T data) {
+        public void onItemClick(BaseViewHolder holder, T data) {
 
         }
 
         @Override
-        public void onItemLongClick(ViewHolder holder, T data) {
+        public void onItemLongClick(BaseViewHolder holder, T data) {
 
         }
     }

@@ -13,5 +13,5 @@ public interface AdapterCallback<T> {
      * @param data
      * @param holder
      */
-    void update(T data, BaseRecyclerAdapter.ViewHolder<T> holder);
+    void update(T data, BaseRecyclerAdapter.BaseViewHolder<T> holder);
 }

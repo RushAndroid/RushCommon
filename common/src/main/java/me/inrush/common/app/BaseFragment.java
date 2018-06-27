@@ -2,13 +2,11 @@ package me.inrush.common.app;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * @author inrush
@@ -18,13 +16,13 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends android.support.v4.app.Fragment {
 
-    // 根布局
+    /**
+     * 根布局
+     */
     protected View mRoot;
-    protected Unbinder mRootUnbinder;
 
     /**
      * 在Fragment添加到Activity中去的时候
-     *
      * @param context 上下文
      */
     @Override
@@ -36,7 +34,7 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mRoot == null) {
             int layId = getContentLayoutId();
             // 初始化当前的根布局,但是不在创建时添加到container里面去
@@ -55,7 +53,7 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // 当View创建完成以后初始化数据
         initData();
@@ -81,7 +79,7 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
      * 初始化控件
      */
     protected void initWidget(View root) {
-        mRootUnbinder = ButterKnife.bind(this, root);
+
     }
 
     /**
