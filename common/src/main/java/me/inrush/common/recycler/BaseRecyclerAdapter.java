@@ -55,7 +55,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     /**
      * 数据列表
      */
-    private final List<T> mDataList;
+    protected final List<T> mDataList;
     /**
      * Item点击事件监听器
      */
