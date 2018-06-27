@@ -119,7 +119,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      */
     @Override
     public int getItemViewType(int position) {
-        return getItemViewType(position, mDataList.get(position));
+        return getItemLayoutId(position, mDataList.get(position));
     }
 
     /**
@@ -130,16 +130,16 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
      * @return XML文件的ID, 用于创建ViewHolder
      */
     @LayoutRes
-    protected abstract int getItemViewType(int position, T data);
+    protected abstract int getItemLayoutId(int position, T data);
 
     /**
      * 得到一个新的ViewHolder
      *
      * @param root     根布局
-     * @param viewType 布局Id
+     * @param layoutId 布局Id
      * @return ViewHolder
      */
-    protected abstract BaseViewHolder<T> onCreateViewHolder(View root, int viewType);
+    protected abstract BaseViewHolder<T> onCreateViewHolder(View root, int layoutId);
 
     /**
      * 绑定一个数据到holder上

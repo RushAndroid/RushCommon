@@ -23,8 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         if (initArgs(getIntent().getExtras())) {
             setContentView(getContentLayoutId());
-            initWidget();
             initData();
+            initWidget();
         } else {
             finish();
         }
