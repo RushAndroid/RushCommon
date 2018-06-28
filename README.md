@@ -3,11 +3,13 @@ Android Common Library
 
 
 ## Features
-1. BaseWiget
+1. BaseWidget
     - BaseActivity
     - BaseFragment
     - BaseApplication
     - BaseRecycleAdapter
     - BaseMultiRecycleItemView (multi layout recycle view)
-2. Thread
+2. ThreadUtil
     - Run
+        + RunOnUiThread
+        + RunOnBackgroundThread
