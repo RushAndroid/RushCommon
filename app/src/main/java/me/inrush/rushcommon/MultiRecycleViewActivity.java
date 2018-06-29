@@ -3,9 +3,9 @@ package me.inrush.rushcommon;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
@@ -15,8 +15,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.inrush.common.app.BaseActivity;
-import me.inrush.common.recycler.BaseRecyclerItemView;
-import me.inrush.common.recycler.RecycleViewDivider;
+import me.inrush.common.widget.recycler.BaseRecyclerItemView;
+import me.inrush.common.widget.recycler.RecycleViewDivider;
 import me.inrush.rushcommon.recycler.multi.MultiRecycleAdapter;
 import me.inrush.rushcommon.recycler.multi.bean.ImageBean;
 import me.inrush.rushcommon.recycler.multi.bean.TextBean;
@@ -73,9 +73,15 @@ public class MultiRecycleViewActivity extends BaseActivity {
         super.initWidget();
         ButterKnife.bind(this);
         mTopBar.setTitle("Multi RecycleView");
+        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mAdapter = new MultiRecycleAdapter(mItemViews);
         mRecycleView.setAdapter(mAdapter);
-        mRecycleView.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 1, Color.parseColor("#eeeeee")));
+        mRecycleView.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL));
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

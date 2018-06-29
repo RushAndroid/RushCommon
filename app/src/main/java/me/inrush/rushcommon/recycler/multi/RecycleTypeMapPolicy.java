@@ -1,7 +1,7 @@
 package me.inrush.rushcommon.recycler.multi;
 
-import me.inrush.common.recycler.BaseRecyclerItemView;
-import me.inrush.common.recycler.TypeMapPolicy;
+import me.inrush.common.widget.recycler.BaseRecyclerItemView;
+import me.inrush.common.widget.recycler.TypeMapPolicy;
 import me.inrush.rushcommon.R;
 import me.inrush.rushcommon.recycler.multi.items.ImageItem;
 import me.inrush.rushcommon.recycler.multi.items.TextImageItem;

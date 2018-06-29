@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.inrush.common.recycler.BaseRecyclerItemView;
+import me.inrush.common.widget.recycler.BaseRecyclerItemView;
 import me.inrush.rushcommon.R;
 import me.inrush.rushcommon.recycler.multi.bean.ImageBean;
 

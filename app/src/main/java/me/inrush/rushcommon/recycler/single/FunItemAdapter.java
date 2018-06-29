@@ -7,7 +7,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.inrush.common.recycler.BaseRecyclerAdapter;
+import me.inrush.common.widget.recycler.BaseRecyclerAdapter;
 import me.inrush.rushcommon.R;
 
 /**

@@ -2,9 +2,9 @@ package me.inrush.rushcommon.recycler.multi;
 
 import java.util.List;
 
-import me.inrush.common.recycler.BaseMultiRecyclerItemAdapter;
-import me.inrush.common.recycler.BaseRecyclerItemView;
-import me.inrush.common.recycler.TypeMapPolicy;
+import me.inrush.common.widget.recycler.BaseMultiRecyclerItemAdapter;
+import me.inrush.common.widget.recycler.BaseRecyclerItemView;
+import me.inrush.common.widget.recycler.TypeMapPolicy;
 
 /**
  * @author inrush
