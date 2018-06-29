@@ -25,7 +25,13 @@ dependencies {
     - BaseApplication
     - BaseRecycleAdapter
     - BaseMultiRecycleItemView (multi layout recycle view)
-2. ThreadUtil
+2. Thread
     - Run
         + RunOnUiThread
         + RunOnBackgroundThread
+4. Utils
+    - PermissionHelper (Android 6.0 dynamic permissions)
+    - SystemUtils
+    - SettingUtils
+    
+ 
