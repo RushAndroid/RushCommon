@@ -69,6 +69,8 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
                     } else {
                         App.showToast("全部权限已经获取,无需再次获取.");
                     }
+                } else if ("工具".equals(data.getTitle())) {
+
                 }
             }
 
@@ -88,7 +90,15 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
         mFunItemList.add(new FunItemBean("多布局", "多布局列表功能"));
         mFunItemList.add(new FunItemBean("RecycleView 分割线", "多类型RecycleView分割线"));
         mFunItemList.add(new FunItemBean("获取动态权限", "Android 6.0 动态获取权限"));
-
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
+        mFunItemList.add(new FunItemBean("工具", "各种工具的示例"));
         mPermissionHelper = new PermissionHelper(this);
     }
 
@@ -111,6 +121,7 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
     public void requestPermissionsFail() {
         App.showToast("获取动态权限失败,跳转到设置页面");
         PermissionHelper.openPermissionSettingPage(this);
+
     }
 
     @Override
